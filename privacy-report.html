@@ -107,6 +107,56 @@
     border-left:2px solid rgba(0,38,255,.35);
     font-weight:600;
   }
+  .mobile-nav-toggle,
+  .mobile-nav-backdrop{
+    display:none;
+  }
+  .mobile-nav-toggle{
+    position:fixed;
+    top:16px;
+    left:16px;
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:16px;
+    background:#fff;
+    box-shadow:0 10px 30px rgba(74,74,86,.12);
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:5px;
+    z-index:30;
+    cursor:pointer;
+  }
+  .mobile-nav-toggle span{
+    width:18px;
+    height:2px;
+    border-radius:999px;
+    background:var(--ink);
+    transition:transform .2s ease, opacity .2s ease;
+  }
+  .nav-open .mobile-nav-toggle span:nth-child(1){
+    transform:translateY(7px) rotate(45deg);
+  }
+  .nav-open .mobile-nav-toggle span:nth-child(2){
+    opacity:0;
+  }
+  .nav-open .mobile-nav-toggle span:nth-child(3){
+    transform:translateY(-7px) rotate(-45deg);
+  }
+  .mobile-nav-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(74,74,86,.18);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+    z-index:20;
+  }
+  .nav-open .mobile-nav-backdrop{
+    opacity:1;
+    pointer-events:auto;
+  }
 
   /* ============================================================
      Main white card
@@ -136,6 +186,37 @@
     width:1153px;
     height:20056px;
     transform-origin:top left;
+  }
+  @media (max-width: 900px){
+    .mobile-nav-toggle,
+    .mobile-nav-backdrop{
+      display:flex;
+    }
+    .sidebar{
+      top:12px;
+      left:12px;
+      width:min(320px, calc(100vw - 24px));
+      max-height:calc(100vh - 24px);
+      padding:20px 12px;
+      background:#fff;
+      border-radius:28px;
+      box-shadow:0 20px 50px rgba(74,74,86,.18);
+      transform:translateX(calc(-100% - 24px));
+      opacity:0;
+      transition:transform .25s ease, opacity .25s ease;
+      z-index:25;
+    }
+    .nav-open .sidebar{
+      transform:translateX(0);
+      opacity:1;
+    }
+    .card{
+      left:12px;
+      right:12px;
+      top:12px;
+      bottom:12px;
+      border-radius:32px;
+    }
   }
 
   /* ----- primitives reused across the card ----- */
@@ -356,11 +437,11 @@
   /* avatars */
   .av-consensys{background-image:url('https://entethalliance.github.io/wg-privacy/logos/consensys.png')}
   .av-coti{background-image:url('https://entethalliance.github.io/wg-privacy/logos/coti.png');border-radius:64px}
-  .av-kaleido{background-image:url('https://entethalliance.github.io/wg-privacy/logos/kaleido.png')}
+  .av-kaleido{background-image:url('./Kaleido.jpg')}
   .av-ey{background-image:url('https://entethalliance.github.io/wg-privacy/logos/ey.png');border-radius:0}
   .av-polygon{background-image:url('https://entethalliance.github.io/wg-privacy/logos/polygon.png');border-radius:0}
   .av-zksync{background-image:url('https://entethalliance.github.io/wg-privacy/logos/zksync.png')}
-  .av-applied{background-image:url('https://entethalliance.github.io/wg-privacy/logos/appliedblockchain.png')}
+  .av-applied{background-image:url('./Applied blockchain.jpg')}
 
   /* ============================================================
      Section 01 — Opening Statement (top 730)
@@ -1881,6 +1962,12 @@
 </head>
 <body>
 <div class="page">
+  <button class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-controls="nav" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="mobile-nav-backdrop" aria-hidden="true"></div>
 
   <!-- =========================================================
        Sidebar (200px, sticky, 14 items, scroll-spy)
@@ -2752,7 +2839,7 @@
       <div class="profile" id="profile-4">
         <div class="profile-head" onclick="this.parentElement.classList.toggle('open')">
           <div class="num">4</div>
-          <div class="logo-slot"><img src="https://entethalliance.github.io/wg-privacy/logos/kaleido.png" alt="Kaleido"></div>
+          <div class="logo-slot"><img src="./Paladin.svg" alt="Paladin"></div>
           <div class="info">
             <p class="name">Paladin</p>
             <div class="meta">
@@ -2955,7 +3042,7 @@
       <div class="profile" id="profile-7">
         <div class="profile-head" onclick="this.parentElement.classList.toggle('open')">
           <div class="num">7</div>
-          <div class="logo-slot"><img src="https://entethalliance.github.io/wg-privacy/logos/appliedblockchain.png" alt="Applied Blockchain"></div>
+          <div class="logo-slot"><img src="./Applied blockchain.jpg" alt="Applied Blockchain"></div>
           <div class="info">
             <p class="name">Silent Data</p>
             <div class="meta">
@@ -3322,6 +3409,8 @@
     var sidebar = document.querySelector('.sidebar');
     var sidebarLogo = document.querySelector('.sidebar .logo');
     var nav = document.querySelector('.nav');
+    var mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    var mobileNavBackdrop = document.querySelector('.mobile-nav-backdrop');
     var sec08Block = document.querySelector('.sec08-block');
     var flowSections = document.querySelector('.flow-sections');
     var secEnd = document.getElementById('sec-end');
@@ -3341,6 +3430,14 @@
     var suppressUntil = 0;
 
     function clamp(n, min, max){ return Math.min(max, Math.max(min, n)); }
+    function isMobileNav(){ return window.innerWidth <= 900; }
+    function setMobileNav(open){
+      document.body.classList.toggle('nav-open', !!open);
+      if (mobileNavToggle){
+        mobileNavToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        mobileNavToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      }
+    }
     function getInnerOffset(el){
       var top = 0;
       var node = el;
@@ -3361,6 +3458,28 @@
     }
     function updateResponsiveSidebar(){
       if (!sidebar || !card) return;
+      if (isMobileNav()){
+        sidebar.style.width = '';
+        sidebar.style.padding = '';
+        sidebar.style.gap = '';
+        if (sidebarLogo){
+          sidebarLogo.style.width = '';
+          sidebarLogo.style.height = '';
+        }
+        if (nav){
+          nav.style.fontSize = '';
+        }
+        Array.prototype.forEach.call(document.querySelectorAll('.nav a'), function(link){
+          link.style.padding = '';
+          link.style.borderRadius = '';
+        });
+        Array.prototype.forEach.call(document.querySelectorAll('.nav a .n'), function(num){
+          num.style.width = '';
+        });
+        card.style.left = '';
+        setMobileNav(false);
+        return;
+      }
       var scale = clamp(window.innerWidth / 1440, 1, 1.3333);
       var sidebarWidth = 260 * scale;
       var sidebarGap = 24 * scale;
@@ -3414,6 +3533,16 @@
       if (active) active.a.classList.add('active');
     }
     card.addEventListener('scroll', onScroll, { passive:true });
+    if (mobileNavToggle){
+      mobileNavToggle.addEventListener('click', function(){
+        setMobileNav(!document.body.classList.contains('nav-open'));
+      });
+    }
+    if (mobileNavBackdrop){
+      mobileNavBackdrop.addEventListener('click', function(){
+        setMobileNav(false);
+      });
+    }
     window.addEventListener('resize', function(){
       updateResponsiveSidebar();
       updateFlowLayout();
@@ -3466,6 +3595,7 @@
         var id = a.getAttribute('data-target');
         if (!document.getElementById(id)) return;
         e.preventDefault();
+        if (isMobileNav()) setMobileNav(false);
         scrollToTarget(id, true);
       });
     });
@@ -3478,6 +3608,7 @@
         var id = href.slice(1);
         if (!id || !document.getElementById(id)) return;
         e.preventDefault();
+        if (isMobileNav()) setMobileNav(false);
         scrollToTarget(id, true);
       });
     });
