@@ -2128,7 +2128,7 @@
         <div class="sol-card"><p class="num">06</p><div class="body"><p class="t">Polygon CDK</p><p class="s">Configurable privacy spectrum</p></div></div>
       </div>
       <div class="row-cells">
-        <div class="sol-card half"><p class="num">07</p><div class="body"><p class="t">Silent Data</p><p class="s">TEE-based programmable privacy</p></div></div>
+        <div class="sol-card half"><p class="num">07</p><div class="body"><p class="t">Silent Data (Applied Blockchain)</p><p class="s">TEE-based programmable privacy</p></div></div>
       </div>
     </div>
 
@@ -2366,7 +2366,7 @@
         </div>
         <div class="tax-cell br bb">
           <div class="top"><div class="num-pill"><p>02</p></div><p class="code">GC</p></div>
-          <div class="bot"><p class="h">Garbled Circuits</p><p class="d">Two-party computation protocol for joint function evaluation.</p></div>
+          <div class="bot"><p class="h">Garbled Circuits</p><p class="d">Secure computation over encrypted inputs without exposing data to any party.</p></div>
         </div>
         <div class="tax-cell bb">
           <div class="top"><div class="num-pill"><p>03</p></div><p class="code">MPC</p></div>
@@ -2528,11 +2528,11 @@
       <div class="rm-card">
         <div class="rm-head">
           <p class="rm-name">COTI</p>
-          <p class="rm-tech">FHE + Garbled Circuits</p>
+          <p class="rm-tech">Garbled Circuits</p>
           <span class="rm-status prod"><span class="dot"></span>In Production</span>
         </div>
         <div class="rm-body">
-          <p class="rm-evidence">Privex live on mainnet (June 2025); StaTwig VaccineLedger deployed in Bangladesh &amp; Costa Rica.</p>
+          <p class="rm-evidence">Private RWAs on Testnet with Zonqix, Privex live on mainnet (June 2025); StaTwig VaccineLedger deployed in Bangladesh.</p>
           <div class="rm-links">
             <a class="rm-link" href="https://mainnet.cotiscan.io" target="_blank" rel="noopener">Mainnet Explorer</a>
             <a class="rm-link" href="https://docs.coti.io" target="_blank" rel="noopener">Docs</a>
@@ -2672,7 +2672,7 @@
             <div class="meta">
               <span class="meta-tag">COTI Group</span>
               <span class="meta-tag tech">Garbled Circuits</span>
-              <span class="meta-tag">Organizational Honesty</span>
+              <span class="meta-tag">Cryptographic</span>
             </div>
           </div>
           <div class="arrow"><svg viewBox="0 0 14 14" fill="none"><path d="M3 5 L7 9 L11 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -2686,13 +2686,15 @@
             <div>
               <h4>Privacy Approach</h4>
               <p>COTI uses Garbled Circuits (GC), an advanced multi-party computation (MPC) technique, to enable encrypted computation within workflows. Sensitive data including inputs, balances, on-chain state, and smart contract logic, remains encrypted end-to-end across storage, computation and transmission. Programmable smart contracts allow selective disclosure for audits, compliance, or permissions via permissioned view-keys.</p>
+              <p>Institutions can granularly select, on a per party basis, which participants have access to decryption rights. Further they may decide which parties may run computation on data that stays encrypted but provides decrypted outputs.</p>
             </div>
             <div>
               <h4>Integration Requirements</h4>
               <ul>
                 <li>Deploy on COTI network or bridge existing assets</li>
-                <li>Standard Solidity with parameters specifying confidential data elements</li>
+                <li>Standard Solidity (Fully EVM compatible) with parameters specifying confidential data elements</li>
                 <li>TypeScript, Python, Hardhat tooling available</li>
+                <li>MCP, SKILL.MD and agentic support</li>
               </ul>
             </div>
             <div>
@@ -2700,7 +2702,7 @@
               <ul>
                 <li><strong>Central Bank of Europe — Digital Euro:</strong> Pioneer Partner with the ECB to establish confidential consumer applications on top of a Euro CBDC settlement layer.</li>
                 <li><strong>Privex:</strong> A COTI native privacy-preserving perpetual exchange processing over $25bn in aggregate volume.</li>
-                <li><strong>Unicef, Bangladesh Government, StaTwig:</strong> National-scale rollout completing 10 million private computations on encrypted IoT-enabled vaccine data for approximately $7 total.</li>
+                <li><strong>Unicef, Bangladesh Government, StaTwig:</strong> National-scale rollout completing 10 million private computations on encrypted IoT-enabled vaccine data for approximately $7.00 in total gas fees (computation cost).</li>
               </ul>
             </div>
             <div>
@@ -3055,7 +3057,7 @@
       <div class="profile" id="profile-7">
         <div class="profile-head" onclick="this.parentElement.classList.toggle('open')">
           <div class="num">7</div>
-          <div class="logo-slot"><img src="./Applied blockchain.jpg" alt="Applied Blockchain"></div>
+          <div class="logo-slot"><img src="./sd-icon-circle-blue.png" alt="Silent Data"></div>
           <div class="info">
             <p class="name">Silent Data</p>
             <div class="meta">
