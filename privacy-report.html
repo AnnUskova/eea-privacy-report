@@ -438,7 +438,7 @@
   .av-consensys{background-image:url('https://entethalliance.github.io/wg-privacy/logos/consensys.png')}
   .av-coti{background-image:url('https://entethalliance.github.io/wg-privacy/logos/coti.png');border-radius:64px}
   .av-kaleido{background-image:url('./Kaleido.jpg')}
-  .av-ey{background-image:url('https://entethalliance.github.io/wg-privacy/logos/ey.png');border-radius:0}
+  .av-ey { background-image: url('./EY.png'); background-size: 100%; background-position: center; background-repeat: no-repeat; border-radius: 0;}
   .av-polygon{background-image:url('https://entethalliance.github.io/wg-privacy/logos/polygon.png');border-radius:0}
   .av-zksync{background-image:url('https://entethalliance.github.io/wg-privacy/logos/zksync.png')}
   .av-applied{background-image:url('./Applied blockchain.jpg')}
@@ -1521,6 +1521,15 @@
     font-family:'Manrope',sans-serif;font-weight:500;
     font-size:15px;line-height:1.6;color:var(--ink);opacity:.85;
   }
+  .ey-disclaimer {
+  font-size: 0.85em;
+  line-height: 1.5;
+  margin-top: 16px;
+  color: #666;
+  opacity: 1;
+  border-left: 2px solid #ddd;
+  padding-left: 12px;
+  }
   .profile-body ul{
     list-style:none;padding:0;margin:0;
     display:flex;flex-direction:column;gap:8px;
@@ -2120,7 +2129,7 @@
         <div class="sol-card"><p class="num">02</p><div class="body"><p class="t">Linea Enterprise (Consensys)</p><p class="s">Private Validium with ZK proofs</p></div></div>
       </div>
       <div class="row-cells">
-        <div class="sol-card"><p class="num">03</p><div class="body"><p class="t">Nightfall (EY)</p><p class="s">Open-source ZK protocol for confidential tokens</p></div></div>
+        <div class="sol-card"><p class="num">03</p><div class="body"><p class="t">Nightfall</p><p class="s">Open-source ZK protocol for confidential tokens</p></div></div>
         <div class="sol-card"><p class="num">04</p><div class="body"><p class="t">Paladin</p><p class="s">Modular privacy framework</p></div></div>
       </div>
       <div class="row-cells">
@@ -2191,7 +2200,7 @@
       <div class="org-chip"><div class="avatar av-applied"></div><p>Applied Blockchain / Silent Data</p></div>
       <div class="org-chip"><div class="avatar av-consensys"></div><p>Consensys / Linea</p></div>
       <div class="org-chip"><div class="avatar av-coti"></div><p>COTI</p></div>
-      <div class="org-chip"><div class="avatar av-ey"></div><p>EY / Nightfall</p></div>
+      <div class="org-chip"><div class="avatar av-ey"></div><p>EY</p></div>
       <div class="org-chip"><div class="avatar av-kaleido"></div><p>Kaleido</p></div>
       <div class="org-chip"><div class="avatar av-polygon"></div><p>Polygon</p></div>
       <div class="org-chip"><div class="avatar av-zksync"></div><p>ZKsync / Matter Labs</p></div>
@@ -2595,12 +2604,12 @@
       <!-- Nightfall -->
       <div class="rm-card">
         <div class="rm-head">
-          <p class="rm-name">Nightfall (EY)</p>
+          <p class="rm-name">Nightfall</p>
           <p class="rm-tech">Zero-Knowledge Proofs</p>
           <span class="rm-status early"><span class="dot"></span>Early Access</span>
         </div>
         <div class="rm-body">
-          <p class="rm-evidence">Nightfall_4 open source (April 2025); integrated into EY OpsChain. No named production customer publicly disclosed.</p>
+        <p class="rm-evidence">Nightfall_4 released April 2025; open source on GitHub; integrated into EY OpsChain.</p>
           <div class="rm-links">
             <a class="rm-link" href="https://github.com/EYBlockchain/nightfall_4_CE" target="_blank" rel="noopener">GitHub</a>
             <a class="rm-link" href="https://blockchain.ey.com" target="_blank" rel="noopener">EY Blockchain</a>
@@ -2796,7 +2805,7 @@
           <div class="info">
             <p class="name">Nightfall</p>
             <div class="meta">
-              <span class="meta-tag">Ernst &amp; Young</span>
+              <span class="meta-tag">Public Domain</span>
               <span class="meta-tag tech">Zero-Knowledge Proofs</span>
               <span class="meta-tag">Cryptographic</span>
             </div>
@@ -2807,7 +2816,9 @@
           <div class="profile-body-inner">
             <div>
               <h4>Summary</h4>
-              <p>Nightfall_4 is an open-source zero-knowledge-based privacy protocol developed and maintained by EY that enables confidential token transfers on Ethereum-compatible networks. Designed for enterprise and institutional use cases, supporting selective disclosure for compliance and audit without introducing global decryption keys or protocol backdoors.</p>
+              <p>Nightfall_4<sup>*</sup> is an open-source zero-knowledge-based privacy protocol originally developed by EY and released to the public domain that enables confidential token transfers on Ethereum-compatible networks. It is designed for enterprise and institutional use cases, supporting selective disclosure for compliance and audit without introducing global decryption keys or protocol backdoors.</p>
+              <p>Nightfall_4 focuses on practical privacy for regulated environments, balancing confidentiality, auditability, and interoperability with public blockchain infrastructure.</p>
+              <p class="ey-disclaimer"><strong>Disclaimer:</strong> Nightfall is not owned by EY and EY provides no warranty and disclaims any and all liability for use of this code. Users must conduct their own diligence with respect to use for their purposes and any and all usage is on an as-is basis and at your own risk.</p>
             </div>
             <div>
               <h4>Privacy Approach</h4>
@@ -2818,7 +2829,7 @@
               <ul>
                 <li>Tokens deposit to receive private commitments</li>
                 <li>Supports decentralized permissioning and KYC-gating</li>
-                <li>X.509 enterprise identity certificates for deposit/withdrawal</li>
+                <li>X.509 enterprise identity certificates supported for deposit/withdrawal</li>
                 <li>Gas fee abstraction available for ERC-20 tokens</li>
               </ul>
             </div>
@@ -2826,9 +2837,8 @@
               <h4>Case Studies</h4>
               <ul>
                 <li><strong>Starknet Ecosystem:</strong> Integration for high-throughput privacy-preserving payments</li>
-                <li><strong>Plume Network:</strong> L3 deployment for privacy-enabled institutional RWA tokenization</li>
+                <li><strong>Plume Network:</strong> L3 deployment for privacy-enabled institutional RWA tokenization, combined with Plume's sequencer-level AML policy</li>
                 <li><strong>Celo Foundation:</strong> First payments-focused blockchain to deploy Nightfall ($180T B2B payments market)</li>
-                <li><strong>Microsoft:</strong> Supply chain proof-of-concept</li>
               </ul>
             </div>
             <div>
@@ -2837,7 +2847,7 @@
                 <li><strong>Cost:</strong> 3.5× cost reduction vs. public ERC-20 transfers</li>
                 <li><strong>Development history:</strong> Since 2019</li>
                 <li><strong>Open source:</strong> Fully public domain, no commercial licensing</li>
-                <li><strong>Maturity:</strong> Deployed across Plume, Celo, and Starknet</li>
+                <li><strong>Maturity:</strong> Early access; ecosystem integrations announced across Plume, Celo, and Starknet</li>
               </ul>
             </div>
             <div>
