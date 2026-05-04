@@ -31,7 +31,7 @@
     --active:#eceeff;
     --card-soft:#f9f9ff;
     --hero-pill:rgba(75,75,89,.02);
-    --post-taxonomy-shift:95px;
+    --post-taxonomy-shift:380px;
     --after-roadmap-shift:-289px;
   }
 
@@ -819,82 +819,46 @@
     font-family:'Manrope',sans-serif;font-weight:500;font-size:16px;line-height:1.55;opacity:.65;
   }
 
-  /* ERC cards (top 7575) */
-  .erc-row{
-    left:24px;top:calc(7647px + var(--post-taxonomy-shift));width:1105px;height:285px;
-    display:flex;gap:8px;align-items:center;
+  /* Sub-header for ERC standards (06.b) */
+  .sec06b-hdr{
+    left:48px;top:7760px;
+    display:flex;gap:40px;align-items:flex-start;
   }
-  .erc-card{
-    height:100%;width:363px;flex-shrink:0;
-    border-radius:40px;padding:56px 32px 48px;
-    display:flex;flex-direction:column;gap:32px;align-items:center;
-    position:relative;overflow:hidden;
+  .sec06b-hdr .main{display:flex;gap:20px;align-items:flex-start}
+  .sec06b-hdr .tt p{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:30px;letter-spacing:-1px;line-height:1.2;
+    color:var(--ink);white-space:nowrap;
   }
-  .erc-card::before{
-    content:'';position:absolute;inset:0;border-radius:40px;
-    background-size:cover;background-position:center;pointer-events:none;
+
+  .sec06b-intro{
+    left:48px;top:7865px;width:927px;padding-left:82px;
+    display:flex;align-items:center;justify-content:center;
   }
-  /* Glass gradient border for ERC cards */
-  .erc-card::after{
-    content:'';
-    position:absolute;inset:0;
-    padding:1.5px;
-    border-radius:40px;
-    background:linear-gradient(135deg,
-      rgba(255,255,255,.85) 0%,
-      rgba(255,255,255,.25) 35%,
-      rgba(255,255,255,.1) 55%,
-      rgba(255,255,255,.3) 75%,
-      rgba(255,255,255,.7) 100%);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-            mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;
-            mask-composite:exclude;
-    pointer-events:none;
+  .sec06b-intro p{
+    width:845px;
+    font-family:'Manrope',sans-serif;font-weight:500;
+    font-size:17px;line-height:1.7;opacity:.9;color:var(--ink);
   }
-  .erc-card.e1::before{background-image:var(--img-frame98);opacity:.6}
-  .erc-card.e2::before{background-image:var(--img-frame99);opacity:.6}
-  .erc-card.e3::before{background-image:var(--img-frame100);opacity:.6}
-  .erc-card > *{position:relative;z-index:1}
-  .erc-card .head{display:flex;flex-direction:column;gap:8px;align-items:center}
-  /* Glass pill kicker with gradient border */
-  .erc-card .kicker{
-    position:relative;
-    background:rgba(255,255,255,.2);
-    backdrop-filter:blur(12px) saturate(140%);
-    -webkit-backdrop-filter:blur(12px) saturate(140%);
-    border-radius:64px;
-    padding:12px 24px;display:flex;align-items:center;
+
+  /* ERC standards grid — same visual language as taxonomy grid */
+  .erc-grid{
+    left:calc(50% - 528.5px);top:8020px;width:1057px;
+    display:flex;flex-direction:column;
   }
-  .erc-card .kicker::before{
-    content:'';
-    position:absolute;inset:0;
-    padding:1.2px;
-    border-radius:64px;
-    background:linear-gradient(135deg,
-      rgba(255,255,255,.95) 0%,
-      rgba(255,255,255,.25) 40%,
-      rgba(255,255,255,.15) 60%,
-      rgba(255,255,255,.85) 100%);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-            mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;
-            mask-composite:exclude;
-    pointer-events:none;
+  .erc-grid .row{display:flex;width:100%}
+  .erc-grid .tax-cell{padding:28px 24px 40px;gap:24px}
+
+  /* Draft tag — small amber pill next to ERC code */
+  .draft-tag{
+    display:inline-block;
+    font-family:'Outfit',sans-serif;font-weight:600;
+    font-size:9px;letter-spacing:1px;text-transform:uppercase;
+    color:#B45309;background:rgba(245,158,11,.14);
+    padding:3px 7px;border-radius:10px;margin-left:6px;
+    vertical-align:middle;
   }
-  .erc-card .kicker p{
-    position:relative;z-index:1;
-    font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;letter-spacing:.48px;
-    text-transform:uppercase;opacity:.8;color:var(--ink);line-height:1.2;white-space:nowrap;
-  }
-  .erc-card .erc{
-    font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;
-    line-height:1.4;letter-spacing:.24px;color:var(--ink);white-space:nowrap;
-  }
-  .erc-card .desc{
-    font-family:'Manrope',sans-serif;font-weight:600;font-size:15px;line-height:1.5;
-    color:var(--ink);text-align:center;width:100%;
-  }
+ 
 
   /* dark-ink inside cards that sit on tinted bg photos */
   .method-card .step,.method-card .ttl,.method-card .desc,
@@ -2389,28 +2353,68 @@
       </div>
     </div>
 
-    <!-- ERC cards row (top 7575) -->
-    <div class="abs erc-row">
-      <div class="erc-card e1">
-        <div class="head">
-          <div class="kicker"><p>Stealth Addresses</p></div>
-          <p class="erc">ERC-5564</p>
+
+    <!-- ERC standards section -->
+    <div class="abs sec06b-hdr">
+      <div class="main">
+        <div class="pill-outline">06.b</div>
+        <div class="tt">
+          <p>Privacy-Related Ethereum Standards</p>
         </div>
-        <p class="desc">One-time private addresses for recipients. No prior interaction needed.</p>
       </div>
-      <div class="erc-card e2">
-        <div class="head">
-          <div class="kicker"><p>Stealth Meta-Address Registry</p></div>
-          <p class="erc">ERC-6538</p>
-        </div>
-        <p class="desc">Registry for stealth addresses. Senders find recipients without direct contact.</p>
+      <div class="sec06-sub">
+        <p class="subtitle">Interoperable</p>
+        <p class="subtitle">Building Blocks</p>
       </div>
-      <div class="erc-card e3">
-        <div class="head">
-          <div class="kicker"><p>Confidential Fungible Token</p></div>
-          <p class="erc">ERC-7984</p>
+    </div>
+
+    <div class="abs sec06b-intro">
+      <p>Beyond cryptographic primitives, the Ethereum ecosystem has standardized interoperable interfaces for privacy-preserving transactions. These standards define building blocks upon which enterprise privacy solutions are constructed — they do not provide end-to-end privacy on their own.</p>
+    </div>
+
+    <!-- ERC standards grid: 4 cells, taxonomy style -->
+    <div class="abs erc-grid">
+      <div class="row">
+        <div class="tax-cell br">
+          <div class="top">
+            <div class="num-pill"><p>01</p></div>
+            <p class="code">ERC-5564</p>
+          </div>
+          <div class="bot">
+            <p class="h">Stealth Addresses</p>
+            <p class="d">Generates one-time addresses for private transfers. Enables recipient privacy without prior interaction.</p>
+          </div>
         </div>
-        <p class="desc">Confidential balances and transfer amounts. Supports FHE, ZK, TEEs.</p>
+        <div class="tax-cell br">
+          <div class="top">
+            <div class="num-pill"><p>02</p></div>
+            <p class="code">ERC-6538</p>
+          </div>
+          <div class="bot">
+            <p class="h">Stealth Meta-Address Registry</p>
+            <p class="d">Provides a registry to discover stealth recipients. Enables senders to generate private addresses without direct contact.</p>
+          </div>
+        </div>
+        <div class="tax-cell br">
+          <div class="top">
+            <div class="num-pill"><p>03</p></div>
+            <p class="code">ERC-7984 <span class="draft-tag">Draft</span></p>
+          </div>
+          <div class="bot">
+            <p class="h">Confidential Fungible Token</p>
+            <p class="d">Supports confidential balances and transfer amounts. Enables privacy-preserving tokens using FHE, ZK, or TEEs.</p>
+          </div>
+        </div>
+        <div class="tax-cell">
+          <div class="top">
+            <div class="num-pill"><p>04</p></div>
+            <p class="code">EIP-8105 <span class="draft-tag">Draft</span></p>
+          </div>
+          <div class="bot">
+            <p class="h">Encrypted Mempools</p>
+            <p class="d">Encrypts transactions before inclusion to reduce front-running and MEV exposure. Particularly relevant for institutional execution.</p>
+          </div>
+        </div>
       </div>
     </div>
 
