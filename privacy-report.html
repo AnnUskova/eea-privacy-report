@@ -31,8 +31,8 @@
     --active:#eceeff;
     --card-soft:#f9f9ff;
     --hero-pill:rgba(75,75,89,.02);
-    --post-taxonomy-shift:95px;
-    --after-roadmap-shift:-289px;
+    --post-taxonomy-shift:380px;
+    --after-roadmap-shift:320px;
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -819,82 +819,46 @@
     font-family:'Manrope',sans-serif;font-weight:500;font-size:16px;line-height:1.55;opacity:.65;
   }
 
-  /* ERC cards (top 7575) */
-  .erc-row{
-    left:24px;top:calc(7647px + var(--post-taxonomy-shift));width:1105px;height:285px;
-    display:flex;gap:8px;align-items:center;
+  /* Sub-header for ERC standards (06.b) */
+  .sec06b-hdr{
+    left:48px;top:7760px;
+    display:flex;gap:40px;align-items:flex-start;
   }
-  .erc-card{
-    height:100%;width:363px;flex-shrink:0;
-    border-radius:40px;padding:56px 32px 48px;
-    display:flex;flex-direction:column;gap:32px;align-items:center;
-    position:relative;overflow:hidden;
+  .sec06b-hdr .main{display:flex;gap:20px;align-items:flex-start}
+  .sec06b-hdr .tt p{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:30px;letter-spacing:-1px;line-height:1.2;
+    color:var(--ink);white-space:nowrap;
   }
-  .erc-card::before{
-    content:'';position:absolute;inset:0;border-radius:40px;
-    background-size:cover;background-position:center;pointer-events:none;
+
+  .sec06b-intro{
+    left:48px;top:7865px;width:927px;padding-left:82px;
+    display:flex;align-items:center;justify-content:center;
   }
-  /* Glass gradient border for ERC cards */
-  .erc-card::after{
-    content:'';
-    position:absolute;inset:0;
-    padding:1.5px;
-    border-radius:40px;
-    background:linear-gradient(135deg,
-      rgba(255,255,255,.85) 0%,
-      rgba(255,255,255,.25) 35%,
-      rgba(255,255,255,.1) 55%,
-      rgba(255,255,255,.3) 75%,
-      rgba(255,255,255,.7) 100%);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-            mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;
-            mask-composite:exclude;
-    pointer-events:none;
+  .sec06b-intro p{
+    width:845px;
+    font-family:'Manrope',sans-serif;font-weight:500;
+    font-size:17px;line-height:1.7;opacity:.9;color:var(--ink);
   }
-  .erc-card.e1::before{background-image:var(--img-frame98);opacity:.6}
-  .erc-card.e2::before{background-image:var(--img-frame99);opacity:.6}
-  .erc-card.e3::before{background-image:var(--img-frame100);opacity:.6}
-  .erc-card > *{position:relative;z-index:1}
-  .erc-card .head{display:flex;flex-direction:column;gap:8px;align-items:center}
-  /* Glass pill kicker with gradient border */
-  .erc-card .kicker{
-    position:relative;
-    background:rgba(255,255,255,.2);
-    backdrop-filter:blur(12px) saturate(140%);
-    -webkit-backdrop-filter:blur(12px) saturate(140%);
-    border-radius:64px;
-    padding:12px 24px;display:flex;align-items:center;
+
+  /* ERC standards grid — same visual language as taxonomy grid */
+  .erc-grid{
+    left:calc(50% - 528.5px);top:8020px;width:1057px;
+    display:flex;flex-direction:column;
   }
-  .erc-card .kicker::before{
-    content:'';
-    position:absolute;inset:0;
-    padding:1.2px;
-    border-radius:64px;
-    background:linear-gradient(135deg,
-      rgba(255,255,255,.95) 0%,
-      rgba(255,255,255,.25) 40%,
-      rgba(255,255,255,.15) 60%,
-      rgba(255,255,255,.85) 100%);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-            mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;
-            mask-composite:exclude;
-    pointer-events:none;
+  .erc-grid .row{display:flex;width:100%}
+  .erc-grid .tax-cell{padding:28px 24px 40px;gap:24px}
+
+  /* Draft tag — small amber pill next to ERC code */
+  .draft-tag{
+    display:inline-block;
+    font-family:'Outfit',sans-serif;font-weight:600;
+    font-size:9px;letter-spacing:1px;text-transform:uppercase;
+    color:#B45309;background:rgba(245,158,11,.14);
+    padding:3px 7px;border-radius:10px;margin-left:6px;
+    vertical-align:middle;
   }
-  .erc-card .kicker p{
-    position:relative;z-index:1;
-    font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;letter-spacing:.48px;
-    text-transform:uppercase;opacity:.8;color:var(--ink);line-height:1.2;white-space:nowrap;
-  }
-  .erc-card .erc{
-    font-family:'Manrope',sans-serif;font-weight:700;font-size:24px;
-    line-height:1.4;letter-spacing:.24px;color:var(--ink);white-space:nowrap;
-  }
-  .erc-card .desc{
-    font-family:'Manrope',sans-serif;font-weight:600;font-size:15px;line-height:1.5;
-    color:var(--ink);text-align:center;width:100%;
-  }
+ 
 
   /* dark-ink inside cards that sit on tinted bg photos */
   .method-card .step,.method-card .ttl,.method-card .desc,
@@ -993,6 +957,45 @@
     border:1px solid rgba(74,74,86,.2);
     color:var(--ink);opacity:.8;line-height:1;
   }
+  /* IPTF block within section 07 */
+  .sec07-iptf{
+    width:999px;
+    margin:64px 0 0 106px;
+    background:rgba(113,141,200,.12);
+    border-radius:32px;
+    padding:32px 40px 40px;
+  }
+  .sec07-iptf .iptf-kicker{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:13px;letter-spacing:1.43px;text-transform:uppercase;
+    opacity:.5;color:var(--ink);line-height:1;
+    margin-bottom:12px;
+  }
+  .sec07-iptf .iptf-title{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:26px;letter-spacing:-.5px;line-height:1.2;
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  .sec07-iptf p{
+    font-family:'Manrope',sans-serif;font-weight:500;
+    font-size:15px;line-height:1.65;opacity:.85;color:var(--ink);
+    margin-bottom:16px;
+  }
+  .sec07-iptf p:last-of-type{margin-bottom:24px}
+  .sec07-iptf p strong{font-weight:700;opacity:1}
+  .sec07-iptf .iptf-links{
+    display:flex;flex-wrap:wrap;gap:6px;
+  }
+  .sec07-iptf .iptf-link{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:12px;letter-spacing:.3px;
+    padding:6px 12px;border-radius:20px;
+    background:#fff;border:1px solid rgba(74,74,86,.15);
+    color:#7C90E9;text-decoration:none;
+    transition:background .15s ease;
+  }
+  .sec07-iptf .iptf-link:hover{background:#ECF2FF}
 
   /* ============================================================
      Section 08 — Trust Models (top 9250)
@@ -1123,6 +1126,59 @@
     -webkit-mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L1 21h22L12 2zm0 6l7.5 13h-15L12 8zm-1 4v4h2v-4h-2zm0 5v2h2v-2h-2z'/%3E%3C/svg%3E") no-repeat center/contain;
             mask:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L1 21h22L12 2zm0 6l7.5 13h-15L12 8zm-1 4v4h2v-4h-2zm0 5v2h2v-2h-2z'/%3E%3C/svg%3E") no-repeat center/contain;
   }
+  /* IPTF PoCs block within section 08 — under Trust Models image */
+  .sec08-iptf-pocs{
+    width:1057px;
+    margin:48px auto 0;
+    padding:32px 40px 36px;
+    background:rgba(113,141,200,.12);
+    border-radius:32px;
+  }
+  .sec08-iptf-pocs .pocs-kicker{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:13px;letter-spacing:1.43px;text-transform:uppercase;
+    opacity:.5;color:var(--ink);line-height:1;
+    margin-bottom:12px;
+  }
+  .sec08-iptf-pocs .pocs-title{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:24px;letter-spacing:-.5px;line-height:1.2;
+    color:var(--ink);
+    margin-bottom:24px;
+  }
+  .sec08-iptf-pocs .pocs-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border-top:1px solid rgba(74,74,86,.13);
+    border-left:1px solid rgba(74,74,86,.13);
+  }
+  .sec08-iptf-pocs .poc-cell{
+    padding:20px 24px;
+    border-right:1px solid rgba(74,74,86,.13);
+    border-bottom:1px solid rgba(74,74,86,.13);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .sec08-iptf-pocs .poc-tag{
+    font-family:'Outfit',sans-serif;font-weight:700;
+    font-size:11px;letter-spacing:1.4px;text-transform:uppercase;
+    opacity:.5;color:var(--ink);line-height:1;
+  }
+  .sec08-iptf-pocs .poc-name{
+    font-family:'Outfit',sans-serif;font-weight:600;
+    font-size:16px;letter-spacing:-.2px;line-height:1.25;
+    color:var(--ink);
+  }
+  .sec08-iptf-pocs .poc-desc{
+    font-family:'Manrope',sans-serif;font-weight:500;
+    font-size:13px;line-height:1.5;opacity:.7;color:var(--ink);
+    margin-bottom:4px;
+  }
+  .sec08-iptf-pocs .poc-link{
+    font-family:'Outfit',sans-serif;font-weight:500;
+    font-size:11px;letter-spacing:.3px;
+    color:#7C90E9;text-decoration:none;
+    align-self:flex-start;
+  }
+  .sec08-iptf-pocs .poc-link:hover{text-decoration:underline}
 
   /* ============================================================
      Section 09 — Readiness Matrix (top 10120)
@@ -1338,6 +1394,11 @@
   }
   .flow-sections .sec11-questions{
     margin-left:130px;
+  }
+  .flow-sections .sec11-iptf-ref{
+    margin-top:48px;
+    margin-left:192px;
+    width:848px;
   }
   .flow-sections .sec11-conclusion{
     margin-left:192px;
@@ -1623,9 +1684,23 @@
     font-size:16px;line-height:1.7;color:#4A4A56;opacity:.9;
     width:100%;
   }
-
+  .sec11-iptf-ref{
+    left:192px;top:calc(14400px + var(--post-taxonomy-shift) + var(--after-roadmap-shift));width:848px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .sec11-iptf-ref .iptf-ref-kicker{
+    font-family:'Outfit',sans-serif;font-weight:700;
+    font-size:11px;letter-spacing:1.43px;text-transform:uppercase;
+    opacity:.5;color:var(--ink);line-height:1;
+  }
+  .sec11-iptf-ref .iptf-ref-text{
+    font-family:'Manrope',sans-serif;font-weight:500;font-style:italic;
+    font-size:14px;line-height:1.6;color:var(--ink);opacity:.85;
+  }
+  .sec11-iptf-ref a{color:#7C90E9;text-decoration:none;font-style:normal}
+  .sec11-iptf-ref a:hover{text-decoration:underline}
   .sec11-conclusion{
-    left:192px;top:calc(14520px + var(--post-taxonomy-shift) + var(--after-roadmap-shift));width:848px;
+    left:192px;top:calc(14620px + var(--post-taxonomy-shift) + var(--after-roadmap-shift));width:848px;
     display:flex;gap:24px;align-items:stretch;
   }
   .sec11-conclusion .conc-bar{
@@ -2389,28 +2464,68 @@
       </div>
     </div>
 
-    <!-- ERC cards row (top 7575) -->
-    <div class="abs erc-row">
-      <div class="erc-card e1">
-        <div class="head">
-          <div class="kicker"><p>Stealth Addresses</p></div>
-          <p class="erc">ERC-5564</p>
+
+    <!-- ERC standards section -->
+    <div class="abs sec06b-hdr">
+      <div class="main">
+        <div class="pill-outline">06.b</div>
+        <div class="tt">
+          <p>Privacy-Related Ethereum Standards</p>
         </div>
-        <p class="desc">One-time private addresses for recipients. No prior interaction needed.</p>
       </div>
-      <div class="erc-card e2">
-        <div class="head">
-          <div class="kicker"><p>Stealth Meta-Address Registry</p></div>
-          <p class="erc">ERC-6538</p>
-        </div>
-        <p class="desc">Registry for stealth addresses. Senders find recipients without direct contact.</p>
+      <div class="sec06-sub">
+        <p class="subtitle">Interoperable</p>
+        <p class="subtitle">Building Blocks</p>
       </div>
-      <div class="erc-card e3">
-        <div class="head">
-          <div class="kicker"><p>Confidential Fungible Token</p></div>
-          <p class="erc">ERC-7984</p>
+    </div>
+
+    <div class="abs sec06b-intro">
+      <p>Beyond cryptographic primitives, the Ethereum ecosystem has standardized interoperable interfaces for privacy-preserving transactions. These standards define building blocks upon which enterprise privacy solutions are constructed — they do not provide end-to-end privacy on their own.</p>
+    </div>
+
+    <!-- ERC standards grid: 4 cells, taxonomy style -->
+    <div class="abs erc-grid">
+      <div class="row">
+        <div class="tax-cell br">
+          <div class="top">
+            <div class="num-pill"><p>01</p></div>
+            <p class="code">ERC-5564</p>
+          </div>
+          <div class="bot">
+            <p class="h">Stealth Addresses</p>
+            <p class="d">Generates one-time addresses for private transfers. Enables recipient privacy without prior interaction.</p>
+          </div>
         </div>
-        <p class="desc">Confidential balances and transfer amounts. Supports FHE, ZK, TEEs.</p>
+        <div class="tax-cell br">
+          <div class="top">
+            <div class="num-pill"><p>02</p></div>
+            <p class="code">ERC-6538</p>
+          </div>
+          <div class="bot">
+            <p class="h">Stealth Meta-Address Registry</p>
+            <p class="d">Provides a registry to discover stealth recipients. Enables senders to generate private addresses without direct contact.</p>
+          </div>
+        </div>
+        <div class="tax-cell br">
+          <div class="top">
+            <div class="num-pill"><p>03</p></div>
+            <p class="code">ERC-7984 <span class="draft-tag">Draft</span></p>
+          </div>
+          <div class="bot">
+            <p class="h">Confidential Fungible Token</p>
+            <p class="d">Supports confidential balances and transfer amounts. Enables privacy-preserving tokens using FHE, ZK, or TEEs.</p>
+          </div>
+        </div>
+        <div class="tax-cell">
+          <div class="top">
+            <div class="num-pill"><p>04</p></div>
+            <p class="code">EIP-8105 <span class="draft-tag">Draft</span></p>
+          </div>
+          <div class="bot">
+            <p class="h">Encrypted Mempools</p>
+            <p class="d">Encrypts transactions before inclusion to reduce front-running and MEV exposure. Particularly relevant for institutional execution.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -2473,6 +2588,18 @@
           </div>
         </div>
       </div>
+       <div class="sec07-iptf">
+          <p class="iptf-title">The Institutional Privacy Task Force</p>
+          <p>The Institutional Privacy Task Force (IPTF) is a team within the Ethereum Foundation that studies the privacy requirements of institutions using or evaluating Ethereum. Its outputs are public: a map of patterns, approaches, use cases, vendors, and jurisdictions; a set of open-source proof-of-concepts and writeups that document the design choices and tradeoffs for each implementation. Everything is released under CC0 and maintained in public GitHub repositories.</p>
+          <p>IPTF and the Ethereum Foundation's PSE team work in parallel. PSE focuses on protocol-level privacy primitives: private proving, private writes, and private reads. IPTF starts from specific institutional requirements such as, but not limited to, regulated payments, tokenized bonds, identity attestation, and cross-border settlement, and compares them against what the current ecosystem can deliver.</p>
+          <p>Evaluations in the map apply four properties the Ethereum Foundation treats as requirements for public infrastructure: <strong>Censorship Resistance, Open Source and Free Software, Privacy, and Security (CROPS)</strong>. The same framework is applied to EF-adjacent work and to third-party vendor work. Patterns and approaches also distinguish between <strong>Institution-to-Institution (I2I)</strong> and <strong>Institution-to-End-User (I2U)</strong> contexts, since the power dynamic between counterparties changes what "privacy" should mean in each case.</p>
+          <p>Contributors include researchers and engineers from outside the Foundation.</p>
+          <div class="iptf-links">
+            <a class="iptf-link" href="https://iptf.ethereum.org/" target="_blank" rel="noopener">iptf.ethereum.org ↗</a>
+            <a class="iptf-link" href="https://github.com/ethereum/iptf-map" target="_blank" rel="noopener">IPTF Map ↗</a>
+            <a class="iptf-link" href="https://github.com/ethereum/iptf-pocs" target="_blank" rel="noopener">IPTF PoCs ↗</a>
+          </div>
+        </div>
     </div>
 
     <!-- ============= SECTION 08 — Trust Models of Enterprise Privacy Solutions (top 8830) ============= -->
@@ -2497,6 +2624,31 @@
       <div class="trust-row">
         <img src="Frame 154.png" alt="Trust models of enterprise privacy solutions" width="2210" height="936" />
       </div>
+      <div class="sec08-iptf-pocs">
+        <p class="pocs-kicker">Reference Implementations · IPTF</p>
+        <p class="pocs-title">Proof-of-concepts illustrating each trust model</p>
+        <div class="pocs-grid">
+          <div class="poc-cell">
+            <p class="poc-tag">Cryptographic Trust · ZK</p>
+            <p class="poc-name">DIY Validium PoC</p>
+            <p class="poc-desc">A ZK-based institutional payment system on RISC Zero, illustrating cryptographic trust without third-party execution.</p>
+            <a class="poc-link" href="https://iptf.ethereum.org/diy-validium/" target="_blank" rel="noopener">iptf.ethereum.org/diy-validium ↗</a>
+          </div>
+          <div class="poc-cell">
+            <p class="poc-tag">Hardware-Anchored Trust · TEE</p>
+            <p class="poc-name">Private Cross-Chain Atomic Swap</p>
+            <p class="poc-desc">A TEE-based coordination implementation using AWS Nitro Enclaves, with documented attestation assumptions and failure modes.</p>
+            <a class="poc-link" href="https://iptf.ethereum.org/private-crosschain-atomic-swap-part-2/" target="_blank" rel="noopener">iptf.ethereum.org/private-crosschain-atomic-swap-part-2 ↗</a>
+          </div>
+          <div class="poc-cell">
+            <p class="poc-tag">Organizational Honesty · FHE</p>
+            <p class="poc-name">FHE Bond on fhEVM</p>
+            <p class="poc-desc">A regulated fixed-income instrument implemented on Zama's fhEVM, illustrating FHE with decentralized co-processors.</p>
+            <a class="poc-link" href="https://iptf.ethereum.org/private-bonds-with-fhe/" target="_blank" rel="noopener">iptf.ethereum.org/private-bonds-with-fhe ↗</a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="flow-sections">
@@ -3170,6 +3322,10 @@
           <p class="df-desc">Mainnet settlement vs. separate chain? Consider the technical resources required and existing infrastructure compatibility.</p>
         </div>
       </div>
+    </div>
+     <div class="abs sec11-iptf-ref">
+      <p class="iptf-ref-kicker">Related IPTF Framework</p>
+      <p class="iptf-ref-text">See IPTF's <a href="https://iptf.ethereum.org/public-rails-vs-private-ledgers/" target="_blank" rel="noopener">Public Rails vs Private Ledgers ↗</a> for a related decision framework covering public blockchains with cryptographic privacy and private ledgers with trust-based privacy.</p>
     </div>
 
     <div class="abs sec11-conclusion">
